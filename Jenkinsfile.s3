@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Скачиваем код из твоего GitHub
-                git branch: 'main', url: 'https://github.com/superios2182/epam-lab1.1.git](https://github.com/superios2182/epam-lab1.1.git'
+                git branch: 'main', url: 'https://github.com/superios2182/epam-lab1.1.git'
             }
         }
 
