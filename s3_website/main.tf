@@ -5,6 +5,13 @@ terraform {
       version = "~> 4.0"
     }
   }
+
+  backend "s3" {
+    bucket         = "my-unique-website-bucket-denys-2026" # Имя твоей корзины S3
+    key            = "state/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks"                    # Наша таблица из Шага 1
+  }
 }
 
 # Настройка провайдера AWS для Jenkins
