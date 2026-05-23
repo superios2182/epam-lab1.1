@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(name: 'action', choices: ['apply', 'destroy'], description: 'Выберите действие для Terraform')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Скачиваем код из твоего GitHub
+                git branch: 'main', url: 'https://github.com/superios2182/epam-lab1.1.git](https://github.com/superios2182/epam-lab1.1.git'
+            }
+        }
+
+        stage('Terraform S3 Action') {
+            steps {
+                echo "Запускаем Terraform S3: ${params.action}"
+                sh """
+                    cd s3_website
+                    terraform init
+                    terraform plan
+                    terraform ${params.action} -auto-approve
+                """
+            }
+        }
+    }
+}
