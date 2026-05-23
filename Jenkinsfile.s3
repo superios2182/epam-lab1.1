@@ -18,7 +18,7 @@ pipeline {
                 echo "Запускаем Terraform S3: ${params.action}"
                 sh """
                     cd s3_website
-                    terraform init
+                    terraform init -input=false -force-copy
                     terraform plan
                     terraform ${params.action} -auto-approve
                 """
